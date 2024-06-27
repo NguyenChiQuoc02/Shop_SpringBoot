@@ -25,7 +25,13 @@ public class User {
     @OneToMany(mappedBy = "users")
     private  List<Order> orders;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -91,6 +97,18 @@ public class User {
         this.orders = orders;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", role=" + role +
+                ", orders=" + orders +
+                '}';
+    }
 }

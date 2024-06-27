@@ -7,9 +7,7 @@
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-      <meta name="author" content="Hỏi Dân IT" />
-      <title>Dashboard - Hỏi Dân IT</title>
+      <title>User</title>
       <link href="/css/styles.css" rel="stylesheet" />
       <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -23,7 +21,7 @@
             <div class="container-fluid px-4">
               <h1 class="mt-4">Manage Users</h1>
               <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                 <li class="breadcrumb-item active">Users</li>
               </ol>
 
@@ -46,7 +44,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <c:forEach var="user" items="${users1}">
+                        <c:forEach var="user" items="${users}">
                           <tr>
                             <th>${user.id}</th>
                             <td>${user.email}</td>
@@ -54,7 +52,8 @@
                             <td>
                               <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                               <a href="/admin/user/update/${user.id}" class="btn btn-warning  mx-2">Update</a>
-                              <a href="/admin/user/delete/${user.id}" class="btn btn-danger">Delete</a>
+                              <a href="/admin/user/delete/${user.id}" class="btn btn-danger"
+                              onclick="return confirm('Do you want to delete this student?');">Delete</a>
                             </td>
                           </tr>
                         </c:forEach>

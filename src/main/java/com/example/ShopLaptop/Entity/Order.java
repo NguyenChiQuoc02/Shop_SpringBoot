@@ -11,6 +11,22 @@ public class Order {
     private Long id;
     private Double totalPrice;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User users;

@@ -20,6 +20,14 @@ public class Product {
     private String fatory;
     private String target;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @OneToMany(mappedBy = "products")
     List<OrderDetail> orderDetails;
 
