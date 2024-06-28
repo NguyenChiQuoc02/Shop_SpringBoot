@@ -1,10 +1,9 @@
-package com.example.ShopLaptop.Controller;
+package com.example.ShopLaptop.Controller.admin;
 
 import com.example.ShopLaptop.Entity.User;
 import com.example.ShopLaptop.Service.UploadService;
 import com.example.ShopLaptop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +23,6 @@ public class UserController {
         this.userService = userService;
         this.uploadService =uploadService;
         this.passwordEncoder = passwordEncoder;
-    }
-
-    @GetMapping("")
-    public String getHomePage( ) {
-
-        return "admin/dashboard/show";
     }
 
     @GetMapping("admin/user")
@@ -68,7 +61,6 @@ public class UserController {
         user.setPassword(hashPassword);
         user.setRole(this.userService.getRoleByName(user.getRole().getName()));
         userService.saveUser(user);
-
         return "redirect:/admin/user";
     }
 
