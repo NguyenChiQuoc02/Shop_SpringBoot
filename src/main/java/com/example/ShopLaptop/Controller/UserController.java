@@ -1,21 +1,29 @@
 package com.example.ShopLaptop.Controller;
 
 import com.example.ShopLaptop.Entity.User;
+import com.example.ShopLaptop.Service.UploadService;
 import com.example.ShopLaptop.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @Controller
 public class UserController {
 
     private UserService userService;
+    private final UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService,UploadService uploadService,PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.uploadService =uploadService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("")
@@ -52,8 +60,15 @@ public class UserController {
     }
 
     @PostMapping("admin/user/create")
-    public String UserCreate(@ModelAttribute("newUser") User user) {
+    public String UserCreate(@ModelAttribute("newUser") User user,
+                             @RequestParam("avatarUser") MultipartFile file) {
+        String avatar = this.uploadService.UploadAvatar(file, "avatar");
+        String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        user.setAvatar(avatar);
+        user.setPassword(hashPassword);
+        user.setRole(this.userService.getRoleByName(user.getRole().getName()));
         userService.saveUser(user);
+
         return "redirect:/admin/user";
     }
 
