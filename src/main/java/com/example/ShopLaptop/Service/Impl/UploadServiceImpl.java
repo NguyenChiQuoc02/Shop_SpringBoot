@@ -1,7 +1,6 @@
 package com.example.ShopLaptop.Service.Impl;
 
 import com.example.ShopLaptop.Service.UploadService;
-import com.example.ShopLaptop.Service.UserService;
 import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +21,10 @@ public class UploadServiceImpl implements UploadService {
         this.servletContext =servletContext;
     }
     @Override
-    public String UploadAvatar(MultipartFile file, String targetFolder) {
+    public String UploadFile(MultipartFile file, String targetFolder) {
+        if(file.isEmpty()){
+            return "";
+        }
         String rootPath = this.servletContext.getRealPath("/resources/images");
         String finalName = "";
         try {

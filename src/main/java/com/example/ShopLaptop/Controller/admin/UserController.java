@@ -3,10 +3,12 @@ package com.example.ShopLaptop.Controller.admin;
 import com.example.ShopLaptop.Entity.User;
 import com.example.ShopLaptop.Service.UploadService;
 import com.example.ShopLaptop.Service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
@@ -33,17 +35,6 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @GetMapping("admin/product")
-    public String ProductPage() {
-
-        return "admin/product/show";
-    }
-
-    @GetMapping("admin/order")
-    public String OrderPage() {
-
-        return "admin/order/show";
-    }
 
     @GetMapping("admin/user/create")
     public String UserCreatePage(Model model) {
@@ -54,8 +45,9 @@ public class UserController {
 
     @PostMapping("admin/user/create")
     public String UserCreate(@ModelAttribute("newUser") User user,
-                             @RequestParam("avatarUser") MultipartFile file) {
-        String avatar = this.uploadService.UploadAvatar(file, "avatar");
+                             @RequestParam("avatarUser") MultipartFile file
+                            ) {
+        String avatar = this.uploadService.UploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(user.getPassword());
         user.setAvatar(avatar);
         user.setPassword(hashPassword);

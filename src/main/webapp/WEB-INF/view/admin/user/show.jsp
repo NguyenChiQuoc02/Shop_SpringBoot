@@ -53,7 +53,7 @@
                               <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                               <a href="/admin/user/update/${user.id}" class="btn btn-warning  mx-2">Update</a>
                               <a href="/admin/user/delete/${user.id}" class="btn btn-danger"
-                              onclick="return confirm('Do you want to delete this student?');">Delete</a>
+                              onclick="return confirm('Do you want to delete this user?');">Delete</a>
                             </td>
                           </tr>
                         </c:forEach>

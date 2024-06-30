@@ -17,8 +17,18 @@ public class Product {
     private String shortDesc;
     private Long quantity;
     private Long sold;
-    private String fatory;
+    private String factory;
     private String target;
+    private String image;
+
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getId() {
         return id;
@@ -79,12 +89,12 @@ public class Product {
         this.sold = sold;
     }
 
-    public String getFatory() {
-        return fatory;
+    public String getFactory() {
+        return factory;
     }
 
-    public void setFatory(String fatory) {
-        this.fatory = fatory;
+    public void setFactory(String factory) {
+        this.factory = factory;
     }
 
     public String getTarget() {

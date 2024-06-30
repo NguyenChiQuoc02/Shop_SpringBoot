@@ -10,10 +10,57 @@ public class Order {
     @Id
     private Long id;
     private Double totalPrice;
+    private String receiverName;
+
+    private String receiverAddress;
+
+    private String receiverPhone;
+
+    private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User users;
+
+    @OneToMany(mappedBy = "order")
+    List<OrderDetail> orderDetails;
 
     public Long getId() {
         return id;
     }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+
 
     public void setId(Long id) {
         this.id = id;
@@ -26,15 +73,6 @@ public class Order {
     public void setUsers(User users) {
         this.users = users;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User users;
-
-    @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderDetails;
-
-
     public Double getTotalPrice() {
         return totalPrice;
     }
