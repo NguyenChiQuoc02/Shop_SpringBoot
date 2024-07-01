@@ -1,7 +1,6 @@
 package com.example.ShopLaptop.Controller.admin;
 
 import com.example.ShopLaptop.Entity.Product;
-import com.example.ShopLaptop.Entity.User;
 import com.example.ShopLaptop.Service.ProductService;
 import com.example.ShopLaptop.Service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +57,14 @@ public class ProductController {
         return "admin/product/update";
     }
     @PostMapping("admin/product/update")
-    public String ProductUpdate(@ModelAttribute("updateProduct") Product product) {
+    public String ProductUpdate(@ModelAttribute("updateProduct") Product product,
+                                @RequestParam("productFileUpload") MultipartFile file) {
         Product currentProduct = this.productService.getProductById(product.getId());
+        if (!file.isEmpty()) {
+            String img = this.uploadService.UploadFile(file, "product");
+            currentProduct.setImage(img);
+        }
+
         currentProduct.setName(product.getName());
         currentProduct.setPrice(product.getPrice());
         currentProduct.setDetailDesc(product.getDetailDesc());

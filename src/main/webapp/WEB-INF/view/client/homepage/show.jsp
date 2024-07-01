@@ -6,7 +6,7 @@
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Trang chủ - Laptopshop</title>
+                <title>Trang chủ</title>
 
                 <!-- Google Web Fonts -->
                 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,14 +48,8 @@
                     <div class="spinner-grow text-primary" role="status"></div>
                 </div>
                 <!-- Spinner End -->
-
                 <jsp:include page="../layout/header.jsp" />
-
-
                 <jsp:include page="../layout/banner.jsp" />
-
-
-
 
                 <!-- Fruits Shop Start-->
                 <div class="container-fluid fruite py-5">
@@ -92,7 +86,7 @@
                                                             <div
                                                                 class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                                 <h4 style="font-size: 15px;">
-                                                                    <a href="/product/${product.id}">
+                                                                    <a href="/products/${product.id}">
                                                                         ${product.name}
                                                                     </a>
 

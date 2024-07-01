@@ -14,8 +14,8 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script>
                 $(document).ready(() => {
-                    const avatarFile = $("#productFile");
-                    avatarFile.change(function (e) {
+                    const productFile = $("#productFile");
+                    productFile.change(function (e) {
                         const imgURL = URL.createObjectURL(e.target.files[0]);
                         $("#productPreview").attr("src", imgURL);
                         $("#productPreview").css({ "display": "block" });

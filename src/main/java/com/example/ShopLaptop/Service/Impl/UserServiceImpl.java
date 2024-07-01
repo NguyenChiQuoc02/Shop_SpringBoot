@@ -2,6 +2,7 @@ package com.example.ShopLaptop.Service.Impl;
 
 import com.example.ShopLaptop.Entity.Role;
 import com.example.ShopLaptop.Entity.User;
+import com.example.ShopLaptop.Entity.dto.RegisterDTO;
 import com.example.ShopLaptop.Repository.RoleRepository;
 import com.example.ShopLaptop.Repository.UserRepository;
 import com.example.ShopLaptop.Service.UserService;
@@ -46,5 +47,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public Role getRoleByName(String name) {
         return this.roleRepository.findByName(name);
+    }
+
+    @Override
+    public User registerDTOtoUser(RegisterDTO registerDTO) {
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + " "+ registerDTO.getLastName() );
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+        return user;
     }
 }
