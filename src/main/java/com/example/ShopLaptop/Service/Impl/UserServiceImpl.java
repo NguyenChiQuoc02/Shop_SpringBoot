@@ -57,4 +57,14 @@ public class UserServiceImpl implements UserService {
         user.setPassword(registerDTO.getPassword());
         return user;
     }
+
+    @Override
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
 }

@@ -1,5 +1,8 @@
 package com.example.ShopLaptop.Entity.dto;
 
+import com.example.ShopLaptop.Service.validator.RegisterChecked;
+
+@RegisterChecked
 public class RegisterDTO {
 
     private String firstName;

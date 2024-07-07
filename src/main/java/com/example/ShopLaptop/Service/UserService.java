@@ -14,4 +14,6 @@ public interface UserService {
     public  void deleteUser( long id);
     public Role getRoleByName(String name);
     public User registerDTOtoUser(RegisterDTO registerDTO);
+    public boolean checkEmailExist(String email);
+    public  User getUserByEmail(String email);
 }

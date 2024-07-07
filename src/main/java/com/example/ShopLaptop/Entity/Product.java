@@ -21,6 +21,11 @@ public class Product {
     private String target;
     private String image;
 
+    @OneToMany(mappedBy = "products")
+    List<OrderDetail> orderDetails;
+
+    @OneToMany(mappedBy = "product")
+    List<CartDetail> cartDetails;
 
     public String getImage() {
         return image;
@@ -38,8 +43,6 @@ public class Product {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "products")
-    List<OrderDetail> orderDetails;
 
     public String getName() {
         return name;
@@ -112,9 +115,13 @@ public class Product {
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
+    public List<CartDetail> getCartDetails() {
+        return cartDetails;
+    }
 
-
-
+    public void setCartDetails(List<CartDetail> cartDetails) {
+        this.cartDetails = cartDetails;
+    }
 
 
 }

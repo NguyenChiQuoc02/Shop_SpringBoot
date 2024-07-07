@@ -12,14 +12,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String email;
-
 
     private String password;
 
     private String fullName;
-
 
     private String address;
     private String phone;
@@ -32,6 +29,17 @@ public class User {
 
     @OneToMany(mappedBy = "users")
     private  List<Order> orders;
+
+    @OneToOne(mappedBy = "user")
+    private  Cart cart;
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 
     public Long getId() {
         return id;
